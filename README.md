@@ -1,73 +1,92 @@
 # Movie Recommendation System
 
-## About the Project
+## Project Overview
 
-This project is a movie recommendation system developed for Week 03 of the EncoderX AI/ML internship.
+This project is a simple movie recommendation system developed as part of the EncoderX AI/ML Week 03 task.
 
-The system recommends movies based on the similarity between their genres. A content-based filtering approach is used to generate the recommendations.
+The system recommends movies that are similar to a movie selected by the user. For this project, I used the MovieLens dataset and built a content-based recommendation system.
 
 ## Dataset
 
-The MovieLens dataset was used for this project.
+The MovieLens Latest Small dataset was used for this project.
 
-The dataset contains movie information and user ratings. The movie data includes movie IDs, titles, and genres, while the ratings data includes user IDs, movie IDs, ratings, and timestamps.
+The main files used were:
 
-Dataset: MovieLens Latest Small Dataset
+- movies.csv
+- ratings.csv
+
+The movies data contains movie titles and genres, while the ratings data contains user ratings.
 
 ## Data Preparation
 
-The following steps were performed:
+The dataset was checked for missing values and duplicate records.
 
-- Checked missing values
-- Removed records with missing movie titles or genres
-- Checked duplicate records
-- Selected relevant columns
-- Cleaned the genre information
-- Prepared user-item interaction data
-- Created a user-item matrix
+For the movie data:
 
-## Recommendation Method
+- Missing movie titles and genres were removed.
+- Duplicate records were removed.
+- Only the required movie columns were kept.
+- The genre separator was changed from `|` to spaces.
 
-Content-based filtering was used for the recommendation system.
+User-item interaction data was also prepared from the ratings dataset.
 
-TF-IDF was used to convert movie genres into numerical features. Cosine similarity was then used to compare movies.
+## Recommendation Approach
 
-The movies with the highest similarity scores are returned as recommendations.
+Content-Based Filtering was used for this project.
+
+The recommendation system compares movies based on their genre information.
+
+TF-IDF was used to convert the movie genres into numerical features. Cosine similarity was then used to calculate the similarity between movies.
+
+## Recommendation Example
+
+For example, when `Toy Story (1995)` was entered, the system recommended movies such as:
+
+- Antz (1998)
+- Toy Story 2 (1999)
+- Adventures of Rocky and Bullwinkle, The (2000)
+- Emperor's New Groove, The (2000)
+- Monsters, Inc. (2001)
 
 ## Evaluation
 
-The system was evaluated using Precision@5.
+The recommendation system was evaluated using Precision@5.
 
-A total of 10 movies were tested.
+The system was tested on 10 movies.
 
 Average Precision@5:
 
-**1.0**
+**1.00**
 
-The score is based on the relevance condition used in this project, where a recommended movie is considered relevant if it shares at least one genre with the selected movie.
+For this project, a recommendation was considered relevant when it shared at least one genre with the selected movie.
 
-## Demonstration
+## Demonstration Interface
 
-A simple Gradio interface was created for testing the recommendation system.
+A simple Gradio interface was created for the project.
 
-The user can enter a movie title and select the number of recommendations. The system then displays the recommended movies with their similarity scores.
+The user can enter a movie title and select the number of recommendations they want to receive.
 
-## Technologies Used
+The interface then displays the recommended movies along with their similarity scores.
+
+## Tools and Technologies
 
 - Python
+- Google Colab
 - Pandas
 - NumPy
 - Scikit-learn
-- TF-IDF
-- Cosine Similarity
 - Gradio
-- Google Colab
+- MovieLens Dataset
 
 ## Project Files
 
-- `Week_03_Movie_Recommendation_System.ipynb` - Complete project notebook
-- `README.md` - Project documentation
+The main project notebook contains the complete implementation, including:
 
-## Result
-
-The recommendation system successfully generated movie recommendations and was tested through the Gradio interface.
+- Dataset loading
+- Data preprocessing
+- User-item interaction preparation
+- TF-IDF feature extraction
+- Cosine similarity
+- Recommendation function
+- Evaluation
+- Gradio interface
